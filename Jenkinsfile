@@ -1,5 +1,8 @@
 pipeline {
   agent any
+	tools { 
+        maven 'Maven_3_8_5'  
+    }
 
   stages {
     stage('Build Artifact - Maven') {
