@@ -20,9 +20,9 @@ pipeline {
     stage('Docker Build and Push') {
       steps {
         withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
-          sh 'printenv'
-          sh 'docker build -t asecurityguru/test-app:""$GIT_COMMIT"" .'
-          sh 'docker push asecurityguru/test-app:""$GIT_COMMIT""'
+          bat 'printenv'
+          bat 'docker build -t asecurityguru/test-app:""$GIT_COMMIT"" .'
+          bat 'docker push asecurityguru/test-app:""$GIT_COMMIT""'
         }
       }
     }
