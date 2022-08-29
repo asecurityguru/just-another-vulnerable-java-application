@@ -2,7 +2,7 @@ pipeline {
   agent any
 	tools { 
         maven 'Maven_3_8_5'  
-    }
+    	}
 
   stages {
     stage('Build Artifact - Maven') {
@@ -17,7 +17,7 @@ pipeline {
         bat "mvn test"
       }
     }
-	  stage('Docker Build and Push') {
+    stage('Docker Build and Push') {
       steps {
         withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
           sh 'printenv'
@@ -26,5 +26,4 @@ pipeline {
         }
       }
     }
-  }
 }
