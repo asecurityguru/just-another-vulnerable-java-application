@@ -66,10 +66,40 @@
 		    <scope>runtime</scope>
 		</dependency>
 	</dependencies>
+	 <build>
+        <plugins>
 
-	<build>
-		<plugins>
-			<plugin>
+<!--#Change 2 - Changes for Unit Test Coverage Percentage Update on SonarCloud Dashboard
+#By ASecurityGuru
+#5/11/2022 11:14 AM IST
+#Default Location of CodeCoverage File is target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+               <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                  <execution>
+                    <id>prepare-agent</id>
+                    <goals>
+                      <goal>prepare-agent</goal>
+                    </goals>
+                  </execution>
+                  <execution>
+                    <id>report</id>
+                    <goals>
+                      <goal>report</goal>
+                    </goals>
+                    <configuration>
+                      <formats>
+                        <format>XML</format>
+                      </formats>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
+
+		<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
