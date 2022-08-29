@@ -17,5 +17,14 @@ pipeline {
         bat "mvn test"
       }
     }
+	  stage('Docker Build and Push') {
+      steps {
+        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          sh 'printenv'
+          sh 'docker build -t asecurityguru/numeric-app:""$GIT_COMMIT"" .'
+          sh 'docker push asecurityguru/numeric-app:""$GIT_COMMIT""'
+        }
+      }
+    }
   }
 }
