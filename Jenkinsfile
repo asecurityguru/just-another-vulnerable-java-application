@@ -19,7 +19,7 @@ pipeline {
             steps { 
                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
                  script{
-                 app = docker-compose build vulnado
+                 app =  docker.build("asg")
                  }
                }
             }
