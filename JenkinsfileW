@@ -6,7 +6,7 @@ pipeline {
   stages{
     stage ('run maven') {
       steps {
-            bash 'mvn clean install'     
+            bat("mvn clean install")
       }
     }
         
@@ -36,7 +36,7 @@ pipeline {
     stage('Kubernetes Deployment - DEV') {
       steps {
         withKubeConfig([credentialsId: 'kubelogin']) {
-          bash "kubectl apply -f deployment.yaml --namespace=test"
+          bat("kubectl apply -f deployment.yaml --namespace=test")
         }
       }
     }
