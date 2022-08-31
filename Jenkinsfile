@@ -3,6 +3,7 @@ pipeline {
   tools { 
         maven 'Maven_3_8_5'  
     }
+  stages{
     stage ('run maven') {
       steps {
             sh 'mvn clean install'     
@@ -39,5 +40,5 @@ pipeline {
         }
       }
     }
-  
+  }
 }
