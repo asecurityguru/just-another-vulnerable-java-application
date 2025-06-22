@@ -74,6 +74,7 @@ public class Comment {
   }
 
   private Boolean commit() throws SQLException {
+    System.out.println("First change");
     String sql = "INSERT INTO comments (id, username, body, created_on) VALUES (?,?,?,?)";
     Connection con = Postgres.connection();
     PreparedStatement pStatement = con.prepareStatement(sql);
